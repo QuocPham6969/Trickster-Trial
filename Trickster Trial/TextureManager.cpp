@@ -46,3 +46,27 @@ void TextureManager::DrawTile(SDL_Texture* texture,
 
     SDL_RenderCopy(renderer, texture, &srcRect, &dstRect);
 }
+
+// NEW
+void TextureManager::DrawTileScaled(SDL_Texture* texture,
+    SDL_Renderer* renderer,
+    int srcTileSize, int dstTileSize,
+    int tileX, int tileY,
+    int dstX, int dstY)
+{
+    if (!texture) return;
+
+    SDL_Rect srcRect;
+    srcRect.x = tileX * srcTileSize;
+    srcRect.y = tileY * srcTileSize;
+    srcRect.w = srcTileSize;
+    srcRect.h = srcTileSize;
+
+    SDL_Rect dstRect;
+    dstRect.x = dstX;
+    dstRect.y = dstY;
+    dstRect.w = dstTileSize;
+    dstRect.h = dstTileSize;
+
+    SDL_RenderCopy(renderer, texture, &srcRect, &dstRect);
+}
