@@ -4,7 +4,8 @@
 SDL_Texture* TextureManager::LoadTexture(const std::string& filePath, SDL_Renderer* renderer)
 {
     SDL_Texture* tex = IMG_LoadTexture(renderer, filePath.c_str());
-    if (!tex) {
+    if (!tex)
+    {
         SDL_Log("Failed to load texture %s: %s", filePath.c_str(), IMG_GetError());
     }
     return tex;
@@ -47,7 +48,6 @@ void TextureManager::DrawTile(SDL_Texture* texture,
     SDL_RenderCopy(renderer, texture, &srcRect, &dstRect);
 }
 
-// NEW
 void TextureManager::DrawTileScaled(SDL_Texture* texture,
     SDL_Renderer* renderer,
     int srcTileSize, int dstTileSize,

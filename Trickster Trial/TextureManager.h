@@ -1,21 +1,29 @@
 #pragma once
+
 #include <string>
 #include <SDL.h>
 
-class TextureManager {
+class TextureManager
+{
 public:
-    static TextureManager& Instance() {
+    static TextureManager& Instance()
+    {
         static TextureManager instance;
         return instance;
     }
 
+    // Load an image from file
     SDL_Texture* LoadTexture(const std::string& filePath, SDL_Renderer* renderer);
 
+    // Draw an arbitrary frame (generic helper)
     void DrawFrame(SDL_Texture* texture,
         SDL_Renderer* renderer,
         int srcX, int srcY, int srcW, int srcH,
         int dstX, int dstY, int scale = 1);
 
+    // Draw a tile from a uniform tile sheet:
+    // - tileSize = size of tile in the sheet (64 here)
+    // - tileX, tileY = indices in the sheet grid (0-based)
     void DrawTile(SDL_Texture* texture,
         SDL_Renderer* renderer,
         int tileSize,
@@ -23,11 +31,10 @@ public:
         int dstX, int dstY,
         int scale = 1);
 
-    // NEW: src tile size and dst tile size can be different
+    // You can keep this around if you want, but we won't use it now.
     void DrawTileScaled(SDL_Texture* texture,
         SDL_Renderer* renderer,
-        int srcTileSize,   // in texture (64)
-        int dstTileSize,   // on screen (32)
+        int srcTileSize, int dstTileSize,
         int tileX, int tileY,
         int dstX, int dstY);
 
