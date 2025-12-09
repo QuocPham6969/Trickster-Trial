@@ -12,7 +12,7 @@ public:
         return instance;
     }
 
-    // Load an image from file
+    // Load an image 
     SDL_Texture* LoadTexture(const std::string& filePath, SDL_Renderer* renderer);
 
     // Draw an arbitrary frame (generic helper)
@@ -31,7 +31,6 @@ public:
         int dstX, int dstY,
         int scale = 1);
 
-    // You can keep this around if you want, but we won't use it now.
     void DrawTileScaled(SDL_Texture* texture,
         SDL_Renderer* renderer,
         int srcTileSize, int dstTileSize,
